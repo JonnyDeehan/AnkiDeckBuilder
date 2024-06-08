@@ -1,0 +1,6 @@
+﻿Translation;Word;Phonetic;Sentence;TargetSentence;PhoneticSentence
+帽子;Hat;màozi;I wear a hat in winter.;我在冬天戴帽子。;Wǒ zài dōngtiān dài màozi.
+围巾;Scarf;wéijīn;She bought a red scarf.;她买了一条红色的围巾。;Tā mǎi le yì tiáo hóngsè de wéijīn.
+手套;Gloves;shǒutào;I lost my gloves.;我丢了我的手套。;Wǒ diū le wǒ de shǒutào.
+皮带;Belt;pídài;He needs a new belt.;他需要一条新的皮带。;Tā xūyào yì tiáo xīn de pídài.
+鞋;Shoes;xié;These shoes are comfortable.;这些鞋子很舒服。;Zhèxiē xiézi hěn shūfu.

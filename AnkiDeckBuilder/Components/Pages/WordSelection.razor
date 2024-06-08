@@ -1,0 +1,50 @@
+﻿<form @onsubmit="HandleSubmit">
+    <InputText @bind-Value="_currentWord" />
+    <Button Type="ButtonType.Submit">Add Word</Button>
+</form>
+<Button @onclick="ClearWords">Clear Words</Button>
+<table>
+    @foreach (var word in Words)
+    {
+        <tr>
+            <td>@word</td>
+            <td><Button @onclick="() => RemoveWord(word)">Remove</Button></td>
+        </tr>
+    }
+</table>
+
+@code {
+    [Parameter]
+    public List<string> Words { get; set; }
+
+    [Parameter]
+    public EventCallback<List<string>> WordsChanged { get; set; }
+
+    private string _currentWord = string.Empty;
+
+    private async Task AddWord()
+    {
+        Words.Add(_currentWord);
+        _currentWord = string.Empty;
+        await WordsChanged.InvokeAsync(Words);
+    }
+
+    private async Task RemoveWord(string word)
+    {
+        Words.Remove(word);
+        await WordsChanged.InvokeAsync(Words);
+    }
+
+    private async Task ClearWords()
+    {
+        Words.Clear();
+        await WordsChanged.InvokeAsync(Words);
+    }
+
+    private async Task HandleSubmit()
+    {
+        // Prevent the form from refreshing the page
+        await Task.CompletedTask;
+        await AddWord();
+    }
+}

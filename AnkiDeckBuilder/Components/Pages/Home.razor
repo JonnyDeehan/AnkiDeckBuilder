@@ -1,0 +1,48 @@
+﻿@page "/"
+
+<PageTitle>Anki Deck Builder</PageTitle>
+
+<h3>
+    This app create an anki deck in a language of your choice, for a given set of words you would like to learn.
+    The cards created in the deck will contain your target word, an example sentence using simple words/other words in the deck, and its translation.
+    If you select the 'provide phonetic' checkbox, the card will also contain the way to say that word.
+</h3>
+<br />
+<h2>Step 1: Select your target language</h2>
+<br />
+<LanguageSelector SelectedLanguage=@_languages[0] Languages=@_languages SelectedLanguageChanged="OnSelectedValueChanged"/>
+<br />
+<p>Selected language: @_selectedLanguage</p>
+<br />
+<h2>Step 2: Enter the words you would like to learn in that language in the textbox below. Click add to insert that word to then enter a new one.</h2>
+<br />
+<WordSelection Words="@_words" WordsChanged="OnWordsChanged" />
+<br />
+<h2>Step 3: Click the "Create Deck" button to generate your Anki deck.</h2>
+<br />
+<CreateDeck Words=@_words TargetLanguage=@_selectedLanguage/>
+
+@code {
+    private string _selectedLanguage;
+    private List<string> _languages = new List<string> { "Chinese", "Italian", "Japanese" };
+
+    protected override void OnParametersSet()
+    {
+        if (_languages != null && _languages.Count > 0)
+        {
+            _selectedLanguage = _languages[0];
+        }
+    }
+
+    private void OnSelectedValueChanged(string value)
+    {
+        _selectedLanguage = value;
+    }
+
+    private List<string> _words { get; set; } = new List<string>();
+
+    private void OnWordsChanged(List<string> words)
+    {
+        _words = words;
+    }
+}

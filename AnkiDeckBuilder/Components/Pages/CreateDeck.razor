@@ -1,0 +1,18 @@
+﻿@using AnkiDeckBuilder.Services
+
+<Button Color="ButtonColor.Primary" Size="Size.Large" Loading="false" @onclick="CreateAnkiDeck"> Create Deck </Button>
+
+@code {
+
+    [Parameter]
+    public List<string> Words { get; set; }
+
+    [Parameter]
+    public string TargetLanguage { get; set; }
+
+    public async void CreateAnkiDeck()
+    {
+        var deckBuilder = new DeckBuilder();
+        await deckBuilder.BuildDeckAsync(Words.ToArray(), TargetLanguage);
+    }
+}

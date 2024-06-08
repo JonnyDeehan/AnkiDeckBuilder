@@ -1,0 +1,31 @@
+@page "/dropdown"
+@using System.Collections.Generic
+
+@code {
+    [Parameter]
+    public string SelectedLanguage { get; set; }
+
+    [Parameter]
+    public List<string> Languages { get; set; }
+
+    private void OnLanguageSelected(string language)
+    {
+        SelectedLanguage = language;
+    }
+
+    [Parameter]
+    public EventCallback<string> SelectedLanguageChanged { get; set; }
+
+    private async Task OnValueChanged(ChangeEventArgs e)
+    {
+        SelectedLanguage = e.Value.ToString();
+        await SelectedLanguageChanged.InvokeAsync(SelectedLanguage);
+    }
+}
+
+<select @onchange="OnValueChanged">
+    @foreach (var language in Languages)
+    {
+        <option value="@language">@language</option>
+    }
+</select>

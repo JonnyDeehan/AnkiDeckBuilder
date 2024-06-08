@@ -1,0 +1,44 @@
+{
+  "words": [
+    {
+      "word": "Hat",
+      "translation": "帽子",
+      "phonetic": "màozi",
+      "sentence": "I wear a hat in winter.",
+      "targetSentence": "我在冬天戴帽子。",
+      "phoneticSentence": "Wǒ zài dōngtiān dài màozi."
+    },
+    {
+      "word": "Scarf",
+      "translation": "围巾",
+      "phonetic": "wéijīn",
+      "sentence": "She bought a red scarf.",
+      "targetSentence": "她买了一条红色的围巾。",
+      "phoneticSentence": "Tā mǎi le yì tiáo hóngsè de wéijīn."
+    },
+    {
+      "word": "Gloves",
+      "translation": "手套",
+      "phonetic": "shǒutào",
+      "sentence": "I lost my gloves.",
+      "targetSentence": "我丢了我的手套。",
+      "phoneticSentence": "Wǒ diū le wǒ de shǒutào."
+    },
+    {
+      "word": "Belt",
+      "translation": "皮带",
+      "phonetic": "pídài",
+      "sentence": "He needs a new belt.",
+      "targetSentence": "他需要一条新的皮带。",
+      "phoneticSentence": "Tā xūyào yì tiáo xīn de pídài."
+    },
+    {
+      "word": "Shoes",
+      "translation": "鞋",
+      "phonetic": "xié",
+      "sentence": "These shoes are comfortable.",
+      "targetSentence": "这些鞋子很舒服。",
+      "phoneticSentence": "Zhèxiē xiézi hěn shūfu."
+    }
+  ]
+}

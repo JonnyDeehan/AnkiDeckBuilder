@@ -1,0 +1,5 @@
+Translation;Word;Phonetic;Sentence;TargetSentence;PhoneticSentence
+牙齿;Teeth;yáchǐ;I brush my teeth every morning.;我每天早上刷牙。;Wǒ měitiān zǎoshàng shuā yá.
+嘴巴;Mouth;zuǐba;He has a big mouth.;他有一个大嘴巴。;Tā yǒu yíge dà zuǐba.
+眼睛;Eyes;yǎnjīng;Her eyes are beautiful.;她的眼睛很美。;Tā de yǎnjīng hěn měi.
+头发;Hair;tóufa;I need to cut my hair.;我需要剪头发。;Wǒ xūyào jiǎn tóufa.
