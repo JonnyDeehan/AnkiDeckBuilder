@@ -1,21 +1,36 @@
-﻿<form @onsubmit="HandleSubmit">
-    <InputText @bind-Value="_currentWord" />
-    <Button Type="ButtonType.Submit">Add Word</Button>
-</form>
-<Button @onclick="ClearWords">Clear Words</Button>
-<table>
-    @foreach (var word in Words)
-    {
-        <tr>
-            <td>@word</td>
-            <td><Button @onclick="() => RemoveWord(word)">Remove</Button></td>
-        </tr>
-    }
-</table>
+﻿@page "/wordlist"
+
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <form @onsubmit="HandleSubmit" style="width: 80%; text-align: center;">
+        <InputText style="width: 80%; height: 50px; font-size: 24px;" @bind-Value="_currentWord" placeholder="Enter a word..." />
+        <div style="margin-top: 20px;">
+            <Button Color=ButtonColor.Primary Type="ButtonType.Submit" style="font-size: 24px; padding: 10px 20px;">Add Word</Button>
+            <Button Color=ButtonColor.Dark @onclick="ClearWords" style="font-size: 24px; padding: 10px 20px; margin-left: 10px;">Clear Words</Button>
+        </div>
+    </form>
+    <div style="width: 80%; height: 400px; margin-top: 30px; overflow-y: auto;">
+        <table style="width: 100%; border-collapse: collapse;">
+            @foreach (var word in Words.Chunk(3))
+            {
+                <tr>
+                    @foreach (var item in word)
+                    {
+                        <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+                            @item
+                            <Button Color=ButtonColor.Secondary @onclick="() => RemoveWord(item)" style="margin-left: 10px; padding: 5px 10px;">
+                                <i class="fas fa-minus"></i>
+                            </Button>
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
 @code {
     [Parameter]
-    public List<string> Words { get; set; }
+    public List<string> Words { get; set; } = new List<string>();
 
     [Parameter]
     public EventCallback<List<string>> WordsChanged { get; set; }
@@ -24,9 +39,12 @@
 
     private async Task AddWord()
     {
-        Words.Add(_currentWord);
-        _currentWord = string.Empty;
-        await WordsChanged.InvokeAsync(Words);
+        if (!string.IsNullOrWhiteSpace(_currentWord))
+        {
+            Words.Add(_currentWord);
+            _currentWord = string.Empty;
+            await WordsChanged.InvokeAsync(Words);
+        }
     }
 
     private async Task RemoveWord(string word)
